@@ -60,9 +60,9 @@ class Account{
         this.balance = balance;
     }
 
-    public void withdrawal(String num, String pwd, int money){
+    public synchronized void withdrawal(String num, String pwd, int money){
 
-        synchronized (this){
+//        synchronized (this){
             System.out.println("请稍后...");
 
             if(cardNo.equals(num) && password.equals(pwd)){
@@ -81,6 +81,6 @@ class Account{
             }else{
                 System.out.println("账户密码错误。");
             }
-        }
+//        }
     }
 }
