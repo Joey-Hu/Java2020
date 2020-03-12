@@ -46,10 +46,12 @@ public class TestReentrantReadWriteLock {
             es.submit(readTask);
         }
 
+        // 完成当前已经接受的任务并不再接受新任务，关闭线程池
         es.shutdown();
 
         while(true){
             System.out.println("is end?");
+            // isTerminated() 判断线程池是否终止
             if(es.isTerminated()){
                 break;
             }

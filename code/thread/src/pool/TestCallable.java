@@ -19,7 +19,7 @@ public class TestCallable {
         Future<Integer> ret2 = es.submit(task2);
 
         try {
-            System.out.println("The result is: " + (ret1.get() +ret2.get()));
+            System.out.println("The result is: " + (ret1.get() + ret2.get()));
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
