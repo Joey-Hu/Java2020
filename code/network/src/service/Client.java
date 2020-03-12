@@ -25,6 +25,7 @@ public class Client {
 
             // 获得请求对象
             PrintWriter request = new PrintWriter(new OutputStreamWriter(client.getOutputStream(), "UTF-8"));
+
             // 向服务器发送请求数据（整理完毕的用户信息字符串）
             request.println(userInfo);
 
