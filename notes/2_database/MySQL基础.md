@@ -3,7 +3,6 @@
 ### 1. 基本操作
 
 ```
-
 1. 数据库（database）：存储数据的仓库
 
 2. 数据库管理系统（DBMS）：MySQL	Oracle	SQL Server DB2
@@ -155,11 +154,69 @@ CREATE TABLE score(
 
 ### 4. 数据库事务
 
+事务：一组要么同时执行成功，要么同时失败的 SQL 语句。
 
+**事务开始于**
 
-#### 5. 管理与常用函数
+* 连接到数据库上，并执行一条 DML 语句（insert, uodate或delete）
+* 前一个事务结束后，又输入了另一条 DML 语句
 
+**事务结束于**
 
+* 执行了 commit （提交，当所有内容都成功，再提交）或 rollback（回滚，一个事务过程中，有一个失败，则全部失败） 语句。
+* 执行了一条 DDL 语句，例如 CREATE TABLE 语句，在这种情况下，会自动执行 commit 语句。
+* 执行了一条 DDL 语句，例如 GRANT 语句，在这种情况下，会自动执行 commit 语句。
+* 断开与数据库的连接
+* 执行了一条 DML 语句，该语句却失败了，在这种情况下，会为这个无效的 DML 语句执行 rollback 语句。
 
+#### 4.1 事务的四大特性
 
-#### 5. 视图
+(ACID)
+
+* 原子性（Atomicity）：表示一个事务中所有曹组是一个整体，要么全部成功，要么全部失败；
+* 一致性（Consistency）：表示一个事务内有一个操作失败，所有更改都必须回滚到修改前状态；
+* 隔离性（Isolation）：事务查看数据所处的状态，要么是另一并发事务修改它之前的状态，要么是另一并发事务修改它之后的状态，事务不会查看中间状态的数据；
+* 持久性（Durability）：持久性事务完成之后，对数据库的影响是永久性的。
+
+```mysql
+# 开启事务
+START TRANSACTION;
+
+# 事务内部DML
+UPDATE account SET money = money-100 WHERE id=1;
+UPDATE account SET money = money+100 WHERE id=2;
+
+# 提交事务
+COMMIT; # connection.commit();
+
+# 回滚
+ROLLBACK; # connection.rollback()
+
+```
+
+### 5. 管理与常用函数
+
+#### 5.1 导出导入数据库
+
+导出数据库表
+
+```mysql
+mysqldump -uroot -p 数据库名 > D:/school.sql
+```
+
+导入数据库
+
+```mysql
+mysql -uroot -p
+mysql>use 数据库
+# 然后使用source命令，后面参数为脚本文件
+mysql>source D:/dbname.sql
+```
+
+#### 5.2 创建用户和授权
+
+#### 5.3 日期处理
+
+#### 5.4 字符串处理	
+
+### 6. 视图 
