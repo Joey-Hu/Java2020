@@ -12,46 +12,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TestJdbc.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/jdbc1/TestJdbc.java">
+      <file leaf-file-name="TestJdbcForLogIn.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jdbc1/TestJdbcForLogIn.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+            <state relative-caret-position="816">
+              <caret line="52" column="33" lean-forward="false" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1584676607986" expanded="true" signature="1347:1383" ph="UPDATE test... " />
+                <marker date="1584690079735" expanded="true" signature="822:872" ph="select * fro... users" />
+                <marker date="1584690079735" expanded="true" signature="822:889" ph="select * fro... users" />
+                <marker date="1584690079735" expanded="true" signature="822:900" ph="select * fro... users" />
+                <marker date="1584690079735" expanded="true" signature="822:901" ph="select * fro... users" />
+                <marker date="1584690079735" expanded="true" signature="822:903" ph="select * fro... users" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JdbcForQuery.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/jdbc1/JdbcForQuery.java">
+      <file leaf-file-name="ex1.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jdbc1/ex1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-103">
-              <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+            <state relative-caret-position="458">
+              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding>
-                <marker date="1584675941891" expanded="true" signature="636:657" ph="Select * fro... teacher" />
+                <element signature="imports" expanded="true" />
+                <marker date="1584695302076" expanded="true" signature="1173:1206" ph="SELECT * FRO... student" />
+                <marker date="1584695302076" expanded="true" signature="1236:1274" ph="SELECT * FRO... student" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultSet.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/sql/ResultSet.java">
+      <file leaf-file-name="DBUtils.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/utils/DBUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-27">
-              <caret line="147" column="17" lean-forward="false" selection-start-line="147" selection-start-column="17" selection-end-line="147" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Statement.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/sql/Statement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="353" column="12" lean-forward="false" selection-start-line="353" selection-start-column="12" selection-end-line="353" selection-end-column="12" />
+            <state relative-caret-position="170">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -76,6 +72,9 @@
       <list>
         <option value="$PROJECT_DIR$/src/jdbc1/JdbcForQuery.java" />
         <option value="$PROJECT_DIR$/src/jdbc1/TestJdbc.java" />
+        <option value="$PROJECT_DIR$/src/jdbc1/TestJdbcForLogIn.java" />
+        <option value="$PROJECT_DIR$/src/jdbc1/ex1.java" />
+        <option value="$PROJECT_DIR$/src/utils/DBUtils.java" />
       </list>
     </option>
   </component>
@@ -137,7 +136,7 @@
               <item name="4_jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="jdbc1" type="462c0819:PsiDirectoryNode" />
-              <item name="JdbcForQuery" type="1a9f42e2:ClassTreeNode" />
+              <item name="ex1" type="1a9f42e2:ClassTreeNode" />
             </path>
             <path>
               <item name="4_jdbc" type="b2602c69:ProjectViewProjectNode" />
@@ -145,6 +144,26 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="jdbc1" type="462c0819:PsiDirectoryNode" />
               <item name="TestJdbc" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="4_jdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4_jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="jdbc1" type="462c0819:PsiDirectoryNode" />
+              <item name="TestJdbcForLogIn" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="4_jdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4_jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4_jdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4_jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="DBUtils" type="1a9f42e2:ClassTreeNode" />
             </path>
             <path>
               <item name="4_jdbc" type="b2602c69:ProjectViewProjectNode" />
@@ -175,6 +194,15 @@
               <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4_jdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
+              <item name="PreparedStatement" type="1a9f42e2:ClassTreeNode" />
             </path>
             <path>
               <item name="4_jdbc" type="b2602c69:ProjectViewProjectNode" />
@@ -193,6 +221,23 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="sql" type="462c0819:PsiDirectoryNode" />
               <item name="Statement" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="4_jdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4_jdbc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="Scanner" type="1a9f42e2:ClassTreeNode" />
             </path>
           </expand>
           <select />
@@ -224,7 +269,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestJdbc">
+  <component name="RunManager" selected="Application.ex1">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -270,6 +315,25 @@
       <module name="4_jdbc" />
       <envs />
     </configuration>
+    <configuration name="TestJdbcForLogIn" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="jdbc1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="jdbc1.TestJdbcForLogIn" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="4_jdbc" />
+      <envs />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -282,6 +346,25 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
+      <envs />
+    </configuration>
+    <configuration name="ex1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="jdbc1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="jdbc1.ex1" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="4_jdbc" />
       <envs />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -344,14 +427,18 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list size="2">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Application.TestJdbc" />
       <item index="1" class="java.lang.String" itemvalue="Application.JdbcForQuery" />
+      <item index="2" class="java.lang.String" itemvalue="Application.TestJdbcForLogIn" />
+      <item index="3" class="java.lang.String" itemvalue="Application.ex1" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.TestJdbc" />
-        <item index="1" class="java.lang.String" itemvalue="Application.JdbcForQuery" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Application.ex1" />
+        <item index="1" class="java.lang.String" itemvalue="Application.TestJdbcForLogIn" />
+        <item index="2" class="java.lang.String" itemvalue="Application.TestJdbc" />
+        <item index="3" class="java.lang.String" itemvalue="Application.JdbcForQuery" />
       </list>
     </recent_temporary>
   </component>
@@ -368,12 +455,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584670241946</updated>
-      <workItem from="1584670244000" duration="5768000" />
+      <workItem from="1584670244000" duration="13264000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5768000" />
+    <option name="totallyTimeSpent" value="13264000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="1072" width="1490" height="880" extended-state="6" />
@@ -415,7 +502,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -466,14 +555,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="1532" column="18" lean-forward="false" selection-start-line="1532" selection-start-column="18" selection-end-line="1532" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/jdbc1/TestJdbc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state relative-caret-position="-282">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1584676607986" expanded="true" signature="1347:1383" ph="UPDATE test... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdbc1/ex1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1584695302076" expanded="true" signature="1173:1206" ph="SELECT * FRO... student" />
+            <marker date="1584695302076" expanded="true" signature="1236:1274" ph="SELECT * FRO... student" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jdbc1/TestJdbcForLogIn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="52" column="33" lean-forward="false" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1584690079735" expanded="true" signature="822:872" ph="select * fro... users" />
+            <marker date="1584690079735" expanded="true" signature="822:889" ph="select * fro... users" />
+            <marker date="1584690079735" expanded="true" signature="822:900" ph="select * fro... users" />
+            <marker date="1584690079735" expanded="true" signature="822:901" ph="select * fro... users" />
+            <marker date="1584690079735" expanded="true" signature="822:903" ph="select * fro... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/DBUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

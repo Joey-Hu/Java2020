@@ -68,6 +68,16 @@ ResultSet对象维护指向结果集中当前行的游标。术语“结果集�
 
 如果没有指定任何ResultSet类型，您将自动获得一个TYPE_FORWARD_ONLY。
 
+#### 4.2 SQL 注入
+
+就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。比如先前的很多影视网站泄露VIP会员密码大多就是通过WEB表单递交查询字符暴出的，这类表单特别容易受到SQL注入式攻击。
+
+#### 4.2 PreparedStatement
+
+该 PreparedStatement 的接口扩展了 Statement 接口，它为您提供了一个通用的Statement对象有两个优点附加功能。
+
+作用：1预编译，效率高  2 安全，避免SQL注入
+
 示范用例1：
 
 ```java
@@ -158,46 +168,56 @@ public class TestJdbc {
 package jdbc1;
 
 import java.sql.*;
+import java.util.Scanner;
 
 /**
  * @author: huhao
- * @time: 2020/3/20 11:26
+ * @time: 2020/3/20 12:31
  * @desc:
  */
-public class JdbcForQuery {
+public class TestJdbcForLogIn {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("请输入用户名：");
+        String username = sc.nextLine();
+
+        System.out.println("请输入密码：");
+        String password = sc.nextLine();
+
+        // 连接数据库
 
         Connection connection = null;
         Statement statement = null;
+        ResultSet resultSet = null;
 
         try {
-            // 1. 注册驱动
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // 2. 获得连接
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb_sqltest?serverTimezone=UTC", "root", "hh123456");
-
-            // 3. 创建Statement
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb_test?serverTimezone=UTC", "root", "hh123456");
             statement = connection.createStatement();
+            String sql = "select * from users where username='"+username+"' and userpassword='"+password+"'";
+            resultSet = statement.executeQuery(sql);
+            if(resultSet.next()){
+                System.out.println("登录成功");
+            }else{
+                System.out.println("登录失败");
 
-            // 4. sql语句
-            String sql = "Select * from teacher;";
-
-            // 5. 执行
-            ResultSet resultSet = statement.executeQuery(sql);
-
-            while(resultSet.next()){
-                int id = resultSet.getInt("Tno");
-                String name = resultSet.getString("Tname");
-                System.out.println(id + "----" + name);
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            // 6. 关闭资源
+        } finally {
             try {
-                if(statement != null){ // 避免了NullPointerException
+                if(resultSet != null){
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            
+            try {
+                if(statement != null){
                     statement.close();
                 }
             } catch (SQLException e) {
@@ -215,4 +235,88 @@ public class JdbcForQuery {
     }
 }
 ```
+示范用例3：
+```java
+package jdbc1;
 
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ * @author: huhao
+ * @time: 2020/3/20 15:39
+ * @desc: 输入学生ID号或出生日期查询该学生的全部信息
+ */
+public class ex1 {
+
+    public static void main(String[] args) throws Exception {
+
+        // 1. 输入学生ID号查询
+        Scanner sc = new Scanner(System.in);
+//        System.out.println("请输入学生的id: ");
+//        int id = sc.nextInt();
+
+        // 2. 输入出生日期查询
+        System.out.println("请输入学生的出生日期：");
+        String birthday = sc.nextLine();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        Date birthday = simpleDateFormat.parse(rowBirthday);
+
+        // 数据库操作
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb_test?serverTimezone=UTC", "root", "hh123456");
+//            String sql = "SELECT * FROM student WHERE sid=?;";
+            String sql = "SELECT * FROM student WHERE birthday=?;";
+            preparedStatement = connection.prepareStatement(sql);
+//            preparedStatement.setObject(1, id);
+            preparedStatement.setObject(1, birthday);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                int sid = resultSet.getInt("sid");
+                String sname = resultSet.getString("sname");
+                int sage = resultSet.getInt("sage");
+                String ssex = resultSet.getString("ssex");
+                Date sbirthday = resultSet.getDate("birthday");
+                double sscore = resultSet.getDouble("sscore");
+
+                System.out.println(sid + "----" + sname + "----" + sage + "----" + ssex + "----" + sbirthday + "----" + sscore);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(resultSet != null){
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                if(preparedStatement != null){
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                if(connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+}
+```
