@@ -149,7 +149,21 @@ CREATE TABLE score(
 
 ### 3. 多表查询
 
+#### 3.1 内连接
 
+SQL中标准的内连接（MySQL中不标准的是SELECT * FROM emp, dept WHERE emp.deptno = dept.deptno;）：
+
+```mysql
+SELECT *
+FROM emp e
+INNER JOIN dept d
+ON e.deptno = d.deptno;
+```
+
+#### 3.2 外连接
+
+1. 左外连接：左表为主，右表是从表
+2. 
 
 
 ### 4. 数据库事务
@@ -220,3 +234,35 @@ mysql>source D:/dbname.sql
 #### 5.4 字符串处理	
 
 ### 6. 视图 
+
+虚拟表，从一个表或多个表中导出来的表。
+
+```mysql
+# 创建
+CREATE VIEW 视图名
+AS 
+SELECT 列名1，列名2
+FROM 表名
+WHERE 条件;
+
+# 使用
+SELECT * FROM 视图名 WHERE 条件;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
