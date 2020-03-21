@@ -485,235 +485,390 @@ DAO模式的组成部分
 
    dao.impl  存放实现类
 
-使用DAO设计模式实现emp表的查询、添加、删除、修改
+使用DAO设计模式实现student表的查询、添加、删除、修改
 
-Employee类
+Student类
 
 ```java
+package entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
 /**
- * 员工类
- * 实体类
- * @author wgy
- *
+ * @author: huhao
+ * @time: 2020/3/21 17:06
+ * @desc:
  */
-public class Emp implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 373910607014836778L;
-	private int empno;
-	private String ename;
-	private String job;
-	private int mgr;
-	private Date hiredate;
-	private double sal;
-	private double comm;
-	private int deptno;
-	
-	public Emp() {
-		// TODO Auto-generated constructor stub
-	}
+public class Student implements Serializable {
+    
+    private int sid;
+    private String sname;
+    private int sage;
+    private String ssex;
+    private Date birthday;
+    private double score;
 
-	public Emp(int empno, String ename, String job, int mgr, Date hiredate, double sal, double comm, int deptno) {
-		super();
-		this.empno = empno;
-		this.ename = ename;
-		this.job = job;
-		this.mgr = mgr;
-		this.hiredate = hiredate;
-		this.sal = sal;
-		this.comm = comm;
-		this.deptno = deptno;
-	}
+    public Student() {
+    }
 
-	public int getEmpno() {
-		return empno;
-	}
+    public int getSid() {
+        return sid;
+    }
 
-	public void setEmpno(int empno) {
-		this.empno = empno;
-	}
+    public void setSid(int sid) {
+        this.sid = sid;
+    }
 
-	public String getEname() {
-		return ename;
-	}
+    public String getSname() {
+        return sname;
+    }
 
-	public void setEname(String ename) {
-		this.ename = ename;
-	}
+    public void setSname(String sname) {
+        this.sname = sname;
+    }
 
-	public String getJob() {
-		return job;
-	}
+    public int getSage() {
+        return sage;
+    }
 
-	public void setJob(String job) {
-		this.job = job;
-	}
+    public void setSage(int sage) {
+        this.sage = sage;
+    }
 
-	public int getMgr() {
-		return mgr;
-	}
+    public String getSsex() {
+        return ssex;
+    }
 
-	public void setMgr(int mgr) {
-		this.mgr = mgr;
-	}
+    public void setSsex(String ssex) {
+        this.ssex = ssex;
+    }
 
-	public Date getHiredate() {
-		return hiredate;
-	}
+    public Date getBirthday() {
+        return birthday;
+    }
 
-	public void setHiredate(Date hiredate) {
-		this.hiredate = hiredate;
-	}
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
 
-	public double getSal() {
-		return sal;
-	}
+    public double getScore() {
+        return score;
+    }
 
-	public void setSal(double sal) {
-		this.sal = sal;
-	}
+    public void setScore(double score) {
+        this.score = score;
+    }
 
-	public double getComm() {
-		return comm;
-	}
+    public Student(int sid, String sname, int sage, String ssex, Date birthday, double score) {
+        this.sid = sid;
+        this.sname = sname;
 
-	public void setComm(double comm) {
-		this.comm = comm;
-	}
+        this.sage = sage;
+        this.ssex = ssex;
+        this.birthday = birthday;
+        this.score = score;
+    }
 
-	public int getDeptno() {
-		return deptno;
-	}
-
-	public void setDeptno(int deptno) {
-		this.deptno = deptno;
-	}
-
-	@Override
-	public String toString() {
-		return "Employee [empno=" + empno + ", ename=" + ename + ", job=" + job + ", mgr=" + mgr + ", hiredate="
-				+ hiredate + ", sal=" + sal + ", comm=" + comm + ", deptno=" + deptno + "]";
-	}
-	
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sid=" + sid +
+                ", sname='" + sname + '\'' +
+                ", sage=" + sage +
+                ", ssex='" + ssex + '\'' +
+                ", birthday=" + birthday +
+                ", score=" + score +
+                '}';
+    }
 }
+
 ```
 
 接口：
 
 ```java
-public interface EmpDao {
-	
-	 //1查询
-	 List<Emp> findAll();
-	 //2更新
-	 void update(Emp e);
-	 //3删除
-	 void delete(int empno);
-	 //4添加
-	 void add(Emp e);
-	 
-	
+package dao;
+
+import entity.Student;
+
+import java.util.List;
+
+/**
+ * @author: huhao
+ * @time: 2020/3/21 17:25
+ * @desc: 数据访问层接口，定义了访问数据库的方法
+ */
+public interface StudentDao {
+
+    /**
+     * 查询所有
+     * @return 返回查询到的数据列表
+     */
+    List<Student> getAllStudent();
+
+    /**
+     * 查询单个
+     * @param sid
+     * @return 返回查询到的数据
+     */
+    Student getStudent(int sid);
+
+    /**
+     * 增加
+     * @param student
+     * @return 影响的行数
+     */
+    int add(Student student);
+
+    /**
+     * 修改
+     * @param student
+     * @return 影响的行数
+     */
+    int update(Student student);
+
+    /**
+     * 删除
+     * @param sid
+     * @return 影响的行数
+     */
+    int delete(int sid);
 }
+
+```
+
+```java
+package service;
+
+import entity.Student;
+
+import java.util.List;
+
+/**
+ * @author: huhao
+ * @time: 2020/3/21 17:52
+ * @desc:
+ */
+public interface StudentService {
+
+    /**
+     * 查询所有
+     * @return 返回查询到的数据列表
+     */
+    List<Student> getAllStudent();
+
+    /**
+     * 查询单个
+     * @param sid
+     * @return 返回查询到的数据
+     */
+    Student getStudent(int sid);
+
+    /**
+     * 增加
+     * @param student
+     * @return 影响的行数
+     */
+    int add(Student student);
+
+    /**
+     * 修改
+     * @param student
+     * @return 影响的行数
+     */
+    int update(Student student);
+
+    /**
+     * 删除
+     * @param sid
+     * @return 影响的行数
+     */
+    int delete(int sid);
+
+}
+
 ```
 
 实现类
 
 ```java
-public class EmpDaoImpl implements EmpDao{
-		Connection conn=null;
-		PreparedStatement pstat=null;
-		ResultSet rs=null;
-	@Override
-	public List<Emp> findAll() {
-		ArrayList<Emp> emps=new ArrayList<Emp>();
-		//1获取连接
-		
-		try {
-			conn=DbUtils.getConnection();
-			pstat=conn.prepareStatement("select * from emp;");
-			rs=pstat.executeQuery();
-			while(rs.next()){
-				int empno=rs.getInt("empno");
-				String ename=rs.getString("ename");
-				String job=rs.getString("job");
-				int mgr=rs.getInt("mgr");
-				Date date=rs.getDate("hiredate");
-				double sal=rs.getDouble("sal");
-				double comm=rs.getDouble("comm");
-				int deptno=rs.getInt("deptno");
-				
-				Emp emp=new Emp(empno, ename, job, mgr, date, sal, comm, deptno);
-				emps.add(emp);
-			}
-			return emps;
-		} catch (Exception e) {
-			throw new RuntimeException("查询emp失败");
-		} finally {
-			DbUtils.closeAll(rs, pstat, conn);
-		}
-		
-	}
+package dao.impl;
 
-	@Override
-	public void update(Emp emp) {
-		conn=DbUtils.getConnection();
-        String sql = "update emp set ename=?,job=?,mgr=?,hiredate=?,sal=?,comm=?,deptno=? where empno = ?";
-        try {
-        	pstat = conn.prepareStatement(sql);
-            pstat.setObject(1,emp.getEname());
-            pstat.setObject(2,emp.getJob());
-            pstat.setObject(3,emp.getMgr());
-            pstat.setObject(4,emp.getHiredate());
-            pstat.setObject(5,emp.getSal());
-            pstat.setObject(6,emp.emp.getComm());
-            pstat.setObject(7,emp.getDeptno());
-            pstat.setObject(8,emp.getEmpno());
-            pstat.executeUpdate();
-        } catch (Exception e) {
-            throw new RuntimeException("修改emp失败");
-        }finally {
-			DbUtils.closeAll(rs, pstat, conn);
-		}
-	}
+import dao.StudentDao;
+import entity.Student;
+import utils.DBUtil;
 
-	@Override
-	public void delete(int empno) {
-		conn=DbUtils.getConnection();
-        String sql = "delete from emp where empno = ?";
-        try {
-        	pstat = conn.prepareStatement(sql);
-            pstat.setObject(1,empno);
-            pstat.executeUpdate();
-        } catch (Exception e) {
-            throw new RuntimeException("删除emp失败");
-        }finally {
-			DbUtils.closeAll(rs, pstat, conn);
-		}
-	}
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
-	@Override
-	public void add(Emp emp) {
-		conn=DbUtils.getConnection();
-        String sql = "insert into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values(?,?,?,?,?,?,?,?)";
+/**
+ * @author: huhao
+ * @time: 2020/3/21 17:34
+ * @desc:
+ */
+public class StudentDaoimpl implements StudentDao{
+
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
+
+    @Override
+    public List<Student> getAllStudent() {
+
+        Student student = null;
+        List<Student> studentList = new ArrayList<Student>();
+
         try {
-        	pstat = conn.prepareStatement(sql);
-            pstat.setObject(1,emp.getEmpno());
-            pstat.setObject(2,emp.getEname());
-            pstat.setObject(3,emp.getJob());
-            pstat.setObject(4,emp.getMgr());
-            pstat.setObject(5,emp.getHiredate());
-            pstat.setObject(6,emp.getSal());
-            pstat.setObject(7,emp.emp.getComm());
-            pstat.setObject(8,emp.getDeptno());
-            pstat.executeUpdate();
+            connection = DBUtil.getConnection();
+            String sql = "SELECT * FROM student;";
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                int sid = resultSet.getInt("sid");
+                String sname = resultSet.getString("sname");
+                int sage = resultSet.getInt("sage");
+                String ssex = resultSet.getString("ssex");
+                Date birthday = resultSet.getDate("birthday");
+                double sscore = resultSet.getDouble("sscore");
+
+                student = new Student(sid, sname, sage, ssex, birthday, sscore);
+                studentList.add(student);
+            }
+            return studentList;
         } catch (Exception e) {
-            throw new RuntimeException("新增emp失败");
-        }finally {
-			DbUtils.closeAll(rs, pstat, conn);
-		}
-	}
+            e.printStackTrace();
+        } finally {
+            DBUtil.closeAll(resultSet, preparedStatement, connection);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Student getStudent(int sid) {
+
+        Student student = null;
+        connection = DBUtil.getConnection();
+        String sql = "SELECT * FROM student WHERE sid=?;";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1, sid);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                int sid1 = resultSet.getInt("sid");
+                String sname = resultSet.getString("sname");
+                int sage = resultSet.getInt("sage");
+                String ssex = resultSet.getString("ssex");
+                Date birthday = resultSet.getDate("birthday");
+                double sscore = resultSet.getDouble("sscore");
+
+                student = new Student(sid1, sname, sage, ssex, birthday, sscore);
+            }
+            return student;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.closeAll(resultSet, preparedStatement, connection);
+        }
+        return null;
+    }
+
+    @Override
+    public int add(Student student) {
+
+        connection = DBUtil.getConnection();
+        String sql = "INSERT INTO student(sid, sname, sage, ssex, birthday, sscore) VALUES (?, ?, ?, ?, ?, ?);";
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1, student.getSid());
+            preparedStatement.setObject(2, student.getSname());
+            preparedStatement.setObject(3, student.getSage());
+            preparedStatement.setObject(4, student.getSsex());
+            preparedStatement.setObject(5, student.getBirthday());
+            preparedStatement.setObject(6, student.getScore());
+
+            int i = preparedStatement.executeUpdate();
+
+            return i;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.closeAll(null, preparedStatement, connection);
+        }
+
+
+        return 0;
+    }
+
+    @Override
+    public int update(Student student) {
+        // ...
+        String sql = "UPDATE student SET sid=?, sname=?, ssex=?, birthday=?, sscore=? WHERE sid=?;";
+        // ...
+        return 0;
+    }
+
+    @Override
+    public int delete(int sid) {
+
+        // ...
+        String sql = "DELETE FROM student WHERE sid=?";
+        // ...
+        return 0;
+    }
 }
+```
+
+```java
+package service.impl;
+
+import dao.StudentDao;
+import dao.impl.StudentDaoimpl;
+import entity.Student;
+import service.StudentService;
+
+import java.util.List;
+
+/**
+ * @author: huhao
+ * @time: 2020/3/21 17:53
+ * @desc: 业务层  避免用户直接访问DAO
+ */
+public class StudentServiceImpl implements StudentService {
+
+    private StudentDao studentDao = new StudentDaoimpl();
+
+    @Override
+    public List<Student> getAllStudent() {
+        return studentDao.getAllStudent();
+    }
+
+    @Override
+    public Student getStudent(int sid) {
+        return studentDao.getStudent(sid);
+    }
+
+    @Override
+    public int add(Student student) {
+        return studentDao.add(student);
+    }
+
+    @Override
+    public int update(Student student) {
+        return studentDao.update(student);
+    }
+
+    @Override
+    public int delete(int sid) {
+        return studentDao.delete(sid);
+    }
+}
+
 ```
 
 

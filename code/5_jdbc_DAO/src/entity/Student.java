@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  * @time: 2020/3/21 17:06
  * @desc:
  */
-public class Student {
+public class Student implements Serializable {
 
     private int sid;
     private String sname;

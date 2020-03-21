@@ -44,7 +44,4 @@ public interface StudentDao {
      * @return 影响的行数
      */
     int delete(int sid);
-
-
-
 }

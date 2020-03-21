@@ -91,15 +91,19 @@ public class StudentDaoimpl implements StudentDao{
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, student.getSid());
-            preparedStatement.setObject(2, student.getSage());
-            preparedStatement.setObject(3, student.getSid());
-            preparedStatement.setObject(4, student.getSid());
-            preparedStatement.setObject(5, student.getSid());
-            preparedStatement.setObject(6, student.getSid());
+            preparedStatement.setObject(2, student.getSname());
+            preparedStatement.setObject(3, student.getSage());
+            preparedStatement.setObject(4, student.getSsex());
+            preparedStatement.setObject(5, student.getBirthday());
+            preparedStatement.setObject(6, student.getScore());
 
+            int i = preparedStatement.executeUpdate();
 
+            return i;
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            DBUtil.closeAll(null, preparedStatement, connection);
         }
 
 
@@ -108,11 +112,18 @@ public class StudentDaoimpl implements StudentDao{
 
     @Override
     public int update(Student student) {
+        // ...
+        String sql = "UPDATE student SET sid=?, sname=?, ssex=?, birthday=?, sscore=? WHERE sid=?;";
+        // ...
         return 0;
     }
 
     @Override
     public int delete(int sid) {
+
+        // ...
+        String sql = "DELETE FROM student WHERE sid=?";
+        // ...
         return 0;
     }
 }
