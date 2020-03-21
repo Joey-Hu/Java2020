@@ -1,6 +1,10 @@
 package jdbc1;
 
+import entity.Teacher;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: huhao
@@ -13,6 +17,8 @@ public class JdbcForQuery {
 
         Connection connection = null;
         Statement statement = null;
+
+        List<Teacher> list = new ArrayList<Teacher>();
 
         try {
             // 1. 注册驱动
@@ -33,7 +39,15 @@ public class JdbcForQuery {
             while(resultSet.next()){
                 int id = resultSet.getInt("Tno");
                 String name = resultSet.getString("Tname");
-                System.out.println(id + "----" + name);
+
+                // 创建实体映射对象 ORM
+                Teacher teacher = new Teacher();
+
+                // 读取到的数据库的零散数据，封装在实体对象属性里
+                teacher.setTno(id);
+                teacher.setTname(name);
+                System.out.println(teacher);
+                list.add(teacher);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,10 +69,5 @@ public class JdbcForQuery {
                 e.printStackTrace();
             }
         }
-
-
-
-
-
     }
 }

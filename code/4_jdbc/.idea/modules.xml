@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/4_jdbc.iml" filepath="$PROJECT_DIR$/4_jdbc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/4_jdbc_DAO/4_jdbc_DAO.iml" filepath="$PROJECT_DIR$/4_jdbc_DAO/4_jdbc_DAO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/4_jdbc_DAO1/4_jdbc_DAO1.iml" filepath="$PROJECT_DIR$/4_jdbc_DAO1/4_jdbc_DAO1.iml" />
     </modules>
   </component>
 </project>

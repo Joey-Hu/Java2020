@@ -1,6 +1,7 @@
 package jdbc1;
 
 import utils.DBUtils;
+import utils.DBUtilsPlatform;
 
 import java.sql.*;
 import java.text.ParseException;
@@ -35,7 +36,7 @@ public class ex1 {
 
         try {
 //            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DBUtils.getConnection();
+            connection = DBUtilsPlatform.getConnection();
 //            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb_test?serverTimezone=UTC", "root", "hh123456");
 //            String sql = "SELECT * FROM student WHERE sid=?;";
             String sql = "SELECT * FROM student WHERE birthday=?;";
@@ -56,7 +57,7 @@ public class ex1 {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBUtils.closeAll(resultSet, preparedStatement, connection);
+            DBUtilsPlatform.closeAll(resultSet, preparedStatement, connection);
         }
 
     }
