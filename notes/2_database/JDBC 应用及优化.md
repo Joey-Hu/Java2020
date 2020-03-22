@@ -487,6 +487,8 @@ DAO模式的组成部分
 
 使用DAO设计模式实现student表的查询、添加、删除、修改
 
+!["projectStructure.png"](./images/projectStructure.png)
+
 Student类
 
 ```java
