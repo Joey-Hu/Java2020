@@ -875,15 +875,205 @@ public class StudentServiceImpl implements StudentService {
 
 
 
+### 4. Druid连接池
 
+#### 4.1 为什么使用连接池？
 
+```
+用户每次请求都需要向数据库获得连接，而数据库创建连接通常需要消耗相对较大的资源，创建时间也较长。假设网站一天10万访问量，数据库服务器就需要创建10万次连接，极大的浪费数据库的资源，并且极易造成数据库服务器内存溢出、宕机。
+现流行的有：DBCP、C3P0、Druid等
+```
 
+```
+Druid 是目前比较流行的高性能的，分布式列存储的OLAP框架(具体来说是MOLAP)。它有如下几个特点：
+一. 亚秒级查询
+     druid提供了快速的聚合能力以及亚秒级的OLAP查询能力，多租户的设计，是面向用户分析应用的理想方式。
+二.实时数据注入
+     druid支持流数据的注入，并提供了数据的事件驱动，保证在实时和离线环境下事件的实效性和统一性
+三.可扩展的PB级存储
+     druid集群可以很方便的扩容到PB的数据量，每秒百万级别的数据注入。即便在加大数据规模的情况下，也能保证时其效性
+四.多环境部署
+     druid既可以运行在商业的硬件上，也可以运行在云上。它可以从多种数据系统中注入数据，包括hadoop，spark，kafka，storm和samza等
+五.丰富的社区
+     druid拥有丰富的社区，供大家学习
+```
 
+#### 4.2 使用步骤
 
+配置文件 database.properties
 
+```properties
+# 连接设置
+driver=com.mysql.cj.jdbc.Driver
+url=jdbc:mysql://localhost:3306/mydb_test?serverTimezone=UTC
+user=root
+pwd=hh123456
 
+# <!-- 初始化连接 -->
+initialSize=10
 
+# 最大连接数
+maxActive=50
 
+# 最小空闲连接
+minIdle=5
+
+#<!-- 超时等待时间以毫秒为单位 60000毫秒/1000等于60秒 -->
+maxWait=5000
+```
+
+#### 4.2. 1 导入jar包
+
+lib/druid-1.0.9.jar
+mysql驱动包
+
+#### 4.2.2 编写工具类
+
+```java
+package utils;
+
+import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+import com.alibaba.druid.pool.DruidPooledConnection;
+
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Properties;
+
+/**
+ * @author: huhao
+ * @time: 2020/3/26 9:07
+ * @desc:
+ */
+public class DruidUtil {
+
+    /**
+     * 1. 创建连接池对象
+     */
+    private static DruidDataSource dataSource;
+
+    static {
+
+        // 创建连接池
+        Properties properties = new Properties();
+        InputStream is = DruidUtil.class.getClassLoader().getResourceAsStream("database.properties");
+        try {
+            properties.load(is);
+             // 通过 Druid 连接池工厂创建一个连接池，自动解析 properties 文件中的键值对
+            dataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 获得一个连接池
+     * @return
+     */
+    public static DruidDataSource getDataSource(){
+
+        return dataSource;
+    }
+
+    /**
+     * 获得连接对象
+     * @return
+     */
+    public static Connection getConnection(){
+
+        try {
+            DruidPooledConnection connection = dataSource.getConnection();
+            return connection;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * 释放资源
+     * @param resultSet
+     * @param statement
+     * @param connection
+     */
+    public static void closeAll(ResultSet resultSet, Statement statement, Connection connection){
+
+        try {
+            if(resultSet != null){
+                resultSet.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if(statement != null){
+                statement.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if(connection != null){
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+#### 4.2.3 测试
+
+```java
+public List<Student> getAllStudent() {
+
+        Student student = null;
+        List<Student> studentList = new ArrayList<Student>();
+
+        try {
+            connection = DruidUtil.getConnection();
+
+            String sql = "SELECT * FROM student;";
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                int sid = resultSet.getInt("sid");
+                String sname = resultSet.getString("sname");
+                int sage = resultSet.getInt("sage");
+                String ssex = resultSet.getString("ssex");
+                Date birthday = resultSet.getDate("birthday");
+                double sscore = resultSet.getDouble("sscore");
+
+                student = new Student(sid, sname, sage, ssex, birthday, sscore);
+                studentList.add(student);
+            }
+            return studentList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DruidUtil.closeAll(resultSet, preparedStatement, connection);
+        }
+
+        return null;
+}
+```
+
+### 面试题
+
+```
+1、什么是JDBC，在什么时候会用到它？
+2、execute，executeQuery，executeUpdate的区别是什么？
+3、JDBC的PreparedStatement是什么？
+4、相对于Statement，PreparedStatement的优点是什么？
+```
 
 
 

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class TestCopy01 {
 
     public static void main(String[] args) throws CloneNotSupportedException {
-        ArrayList
+
 
         Skill skill = new Skill("天地会香主");
 

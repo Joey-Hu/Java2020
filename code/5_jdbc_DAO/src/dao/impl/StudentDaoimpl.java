@@ -3,6 +3,7 @@ package dao.impl;
 import dao.StudentDao;
 import entity.Student;
 import utils.DBUtil;
+import utils.DruidUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -26,7 +27,9 @@ public class StudentDaoimpl implements StudentDao{
         List<Student> studentList = new ArrayList<Student>();
 
         try {
-            connection = DBUtil.getConnection();
+//            connection = DBUtil.getConnection();
+            connection = DruidUtil.getConnection();
+
             String sql = "SELECT * FROM student;";
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
@@ -46,7 +49,7 @@ public class StudentDaoimpl implements StudentDao{
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBUtil.closeAll(resultSet, preparedStatement, connection);
+            DruidUtil.closeAll(resultSet, preparedStatement, connection);
         }
 
         return null;
