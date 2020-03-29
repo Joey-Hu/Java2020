@@ -239,7 +239,7 @@ CSS :层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现
 
 ######       3.1.2 id选择器
 
-​        给需要修改样式的html元素添加id属性标识，在head中使用style标签引入在其中声明id选择器: #id值{属性:属性值}
+​        给需要修改样式的html元素添加id属性标识，在head中使用style标签引入在其中声明id选择器: **#id值{属性:属性值}**
 
 ```css
 具体示例如下:
@@ -257,7 +257,7 @@ CSS :层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现
 
 ######        3.1.3 class选择器
 
-​          给需要修改样式的html元素添加class属性标识，在head中使用style标签引入在其中声明class选择器:  	.class名{属性:属性值}，具体示例如下:
+​          给需要修改样式的html元素添加class属性标识，在head中使用style标签引入在其中声明class选择器:  	**.class名{属性:属性值}**，具体示例如下:
 
 ```css
 创建class选择器：
@@ -625,7 +625,7 @@ position: static | relative| absolute| fixed
 
 
 
-##### 第五节 CSS盒子模型
+####  第五节 CSS盒子模型
 
 ![盒子模型](pic/c5.PNG)
 
