@@ -13,4 +13,19 @@
         <servlet-name>myServlet</servlet-name>
         <url-pattern>/myServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>myServlet2</servlet-name>
+        <servlet-class>com.hh.servlet.MyServlet2</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>myServlet2</servlet-name>
+        <!-- 精确匹配 -->
+        <url-pattern>/myServlet2</url-pattern>
+        <!-- 后缀匹配， 只要.xxx完全一致就可以匹配-->
+        <!--<url-pattern>*.hh</url-pattern>-->
+        <!--        通配符匹配，输入任何内容匹配所有资源都是当前servlet。但是不会影响精确匹配！-->
+        <!--<url-pattern>/*</url-pattern>-->
+    </servlet-mapping>
 </web-app>
