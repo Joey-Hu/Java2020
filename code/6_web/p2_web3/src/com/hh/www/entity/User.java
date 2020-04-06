@@ -11,15 +11,17 @@ public class User {
     private String username;
     private String userpassword;
     private String phone;
+    private int access;
 
     public User() {
     }
 
-    public User(int id, String username, String userpassword, String phone) {
+    public User(int id, String username, String userpassword, String phone, int access) {
         this.id = id;
         this.username = username;
         this.userpassword = userpassword;
         this.phone = phone;
+        this.access = access;
     }
 
     public int getId() {
@@ -54,6 +56,14 @@ public class User {
         this.phone = phone;
     }
 
+    public int getAccess() {
+        return access;
+    }
+
+    public void setAccess(int access) {
+        this.access = access;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -61,6 +71,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", userpassword='" + userpassword + '\'' +
                 ", phone='" + phone + '\'' +
+                ", access=" + access +
                 '}';
     }
 }

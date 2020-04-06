@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * @author: huhao
  * @time: 2020/4/6 11:34
- * @desc: 动态自动登陆
+ * @desc: 处理登陆表单
  */
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
