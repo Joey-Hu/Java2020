@@ -476,6 +476,32 @@ load-on-startup ----有什么用？（hh 2020.04.02）
 4如果值为正整数或者0时，表示容器在应用启动时就加载并初始化这个servlet，值越小，servlet的优先级越高，就越先被加载。值相同时，容器就会自己选择顺序来加载。
 ```
 
+欢迎页面和发生错误返回页面
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+<!--欢迎页面，服务器一启动就加载的页面-->
+    <welcome-file-list>
+        <welcome-file>欢迎.html</welcome-file>
+        <welcome-file>indexs.jsp</welcome-file>
+        <welcome-file>你好.html</welcome-file>
+    </welcome-file-list>
+<!--如果出现指定的错误代码号， 显示给用户的是其他页面-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.html</location>
+    </error-page>
+</web-app>
+```
+
+
+
+
+
 
 
 ##### 	2.5 获取请求参数

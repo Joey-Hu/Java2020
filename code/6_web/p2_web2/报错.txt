@@ -1,0 +1,3 @@
+java.sql.SQLException: java.lang.ClassCastException: java.math.BigInteger cannot be cast to java.lang.Long
+
+将mysql-connect版本与mysql版本不符 换成相符的版本
