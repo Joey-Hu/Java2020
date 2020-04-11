@@ -30,6 +30,9 @@
   ${user.username}<br />  <%-- 相当于user.getUsername() --%>
   ${user.address.zipcode}
 
+  <%--  如果四个作用域都重名   想拿session里的  指定作用域--%>
+  ${sessionScope.username1}
+
 
 
   </body>
