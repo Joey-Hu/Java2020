@@ -12,14 +12,12 @@
     <title>更新员工数据</title>
 </head>
 <body>
-    <form method="post" action="">
+    <form method="post" action="${pageContext.request.contextPath}/update">
         <table>
             <tr>
                 <td>
                     员工编号：
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <input type="text" name="empno" value="${emp.empno}" readonly >
                 </td>
@@ -28,18 +26,14 @@
                 <td>
                     员工姓名：
                 </td>
-            </tr>
-            <tr>
                 <td>
-                    <input type="text" name="empname" value="${emp.empname}" >
+                    <input type="text" name="ename" value="${emp.ename}" >
                 </td>
             </tr>
             <tr>
                 <td>
                     员工职位：
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <input type="text" name="job" value="${emp.job}" >
                 </td>
@@ -48,8 +42,6 @@
                 <td>
                     直属经理：
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <input type="text" name="mgr" value="${emp.mgr}" >
                 </td>
@@ -58,8 +50,6 @@
                 <td>
                     出生日期：
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <input type="date" name="hiredate" value="${emp.hiredate}" >
                 </td>
@@ -68,8 +58,6 @@
                 <td>
                     工资：
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <input type="text" name="sal" value="${emp.sal}" >
                 </td>
@@ -78,8 +66,6 @@
                 <td>
                     奖金：
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <input type="text" name="comm" value="${emp.comm}" >
                 </td>
@@ -88,33 +74,28 @@
                 <td>
                     部门名称：
                 </td>
-            </tr>
-            <tr>
                 <td>
                     <select name="deptno">
                         <c:forEach items="${depts}" var="dept">
                             <option value="${dept.deptno}"
-
-                            ></option>
+                                <%--                            如果当前员工的部门编号和循环的部门的编号相等，则加上选中属性--%>
+                                    <c:if test="${emp.deptno==dept.deptno}">
+                                        selected
+                                    </c:if>
+                            >${dept.dname}</option>
                         </c:forEach>
-
-
-
                     </select>
                 </td>
             </tr>
             <tr>
                 <td>
-                    员工编号：
+                    <input type="submit" value="提交">
                 </td>
-            </tr>
-            <tr>
                 <td>
-                    <input type="text" name="empno" value="${emp.empno}" >
+                    <input type="reset" value="恢复">
                 </td>
             </tr>
         </table>
-
     </form>
 </body>
 </html>

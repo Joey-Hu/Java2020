@@ -36,10 +36,10 @@
                 <td>${emp.comm}</td>
                 <td>${emp.deptno}</td>
                 <td><a href="${pageContext.request.contextPath}/getEmp?empno=${emp.empno}">修改</a> &ensp;
-                    &ensp;<a href="#">删除</a></td>
+                    &ensp;<a href="${pageContext.request.contextPath}/delete?empno=${emp.empno}">删除</a></td>
             </tr>
         </c:forEach>
     </table>
-    <a href="#">新增员工</a>
+    <a href="${pageContext.request.contextPath}/getDept">新增员工</a>
 </body>
 </html>
