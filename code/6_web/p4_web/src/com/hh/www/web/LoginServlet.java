@@ -5,6 +5,7 @@ import com.hh.www.service.EmpService;
 import com.hh.www.service.impl.EmpServiceImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import java.util.List;
  * @desc:
  */
 @WebServlet(name = "LoginServlet", value = "/login")
+@MultipartConfig()
 public class LoginServlet extends HttpServlet {
 
     @Override
