@@ -43,4 +43,16 @@ public class EmpServiceImpl implements EmpService {
         Emp emp = new Emp(empno, ename, job, mgr, hiredate, sal, comm, deptno);
         return empDao.updateEmp(emp);
     }
+
+    @Override
+    public List<Emp> getEmpByPage(int pageIndex, int pageSize) {
+        pageIndex = (pageIndex-1) * pageSize;
+        List<Emp> empList = empDao.getEmpByPage(pageIndex, pageSize);
+        return empList;
+    }
+
+    @Override
+    public long getEmpSize() {
+        return empDao.getEmpSize();
+    }
 }

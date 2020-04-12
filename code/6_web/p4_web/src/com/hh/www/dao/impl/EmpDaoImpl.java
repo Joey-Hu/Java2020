@@ -6,6 +6,7 @@ import com.hh.www.utils.DruidUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -78,6 +79,29 @@ public class EmpDaoImpl implements EmpDao {
             int update = queryRunner.update("UPDATE emp SET ename=?, job=?, mgr=?, hiredate=?, sal=?, comm=?, " +
                     "deptno=? WHERE empno=?", params);
             return update;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override
+    public List<Emp> getEmpByPage(int pageIndex, int pageSize) {
+
+        try {
+            return queryRunner.query("SELECT * FROM emp LIMIT ?, ?;", new BeanListHandler<Emp>(Emp.class),
+                    pageIndex, pageSize);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public long getEmpSize() {
+
+        try {
+            return queryRunner.query("SELECT COUNT(*) FROM emp;", new ScalarHandler<>());
         } catch (SQLException e) {
             e.printStackTrace();
         }

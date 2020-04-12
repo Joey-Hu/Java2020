@@ -16,4 +16,10 @@ public interface EmpService {
     int insertEmp(int empno, String ename, String job, int mgr,String hiredate, double sal, double comm, int deptno);
     int deleteEmp(int empno);
     int updateEmp(int empno, String ename, String job, int mgr,String hiredate, double sal, double comm, int deptno);
+
+    List<Emp> getEmpByPage(int pageIndex, int pageSize);
+
+    long getEmpSize();
+
+
 }

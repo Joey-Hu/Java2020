@@ -16,4 +16,7 @@ public interface EmpDao {
     int insertEmp(Emp emp);
     int deleteEmp(int empno);
     int updateEmp(Emp emp);
+
+    List<Emp> getEmpByPage(int pageIndex, int pageSize);
+    long getEmpSize();
 }

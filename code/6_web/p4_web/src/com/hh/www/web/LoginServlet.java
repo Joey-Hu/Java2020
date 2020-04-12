@@ -31,14 +31,44 @@ public class LoginServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String pi = request.getParameter("pageIndex");
+        String ps = request.getParameter("pageSize");
 
         // 判断用户是否存在（后期再写）
 
         EmpService empService = new EmpServiceImpl();
-        List<Emp> allEmp = empService.getAllEmp();
+        // 获取全部用户
+//        List<Emp> allEmp = empService.getAllEmp();
+
+        int pageIndex = 0;
+        int pageSize = 0;
+
+        if(pi == null){
+            pageIndex = 1;
+        }else{
+            pageIndex = Integer.valueOf(pi);
+        }
+
+        if(ps == null){
+            pageSize = 3;
+        } else {
+            pageSize = Integer.valueOf(ps);
+        }
+
+        if(pageSize!=3){
+            pageSize=3;
+        }
+
+        List<Emp> allEmp = empService.getEmpByPage(pageIndex, pageSize);
+        int empSize = (int)empService.getEmpSize();
+        int total = empSize % pageSize == 0 ? empSize / pageSize : (empSize / pageSize) + 1;
 
         if(allEmp != null){
             request.setAttribute("list", allEmp);
+            request.setAttribute("pageIndex", pageIndex);
+            request.setAttribute("pageSize", pageSize);
+            request.setAttribute("total", total);
+
             // 重定向到getAll.jsp来显示结果
             request.getRequestDispatcher("/getAll.jsp").forward(request, response);
         }

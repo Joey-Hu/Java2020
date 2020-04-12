@@ -40,6 +40,17 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/getDept">新增员工</a>
+    <a href="${pageContext.request.contextPath}/getDept">新增员工</a><br />
+    <a href="${pageContext.request.contextPath}/login?pageIndex=1&pageSize=3">首页</a>
+    <c:if test="${pageIndex>1}">
+        <a href="${pageContext.request.contextPath}/login?pageIndex=${pageIndex-1}&pageSize=3">上一页</a>
+    </c:if>
+    <c:forEach var="i" begin="1" end="${total}" step="1">
+        <a href="${pageContext.request.contextPath}/login?pageIndex=${i}&pageSize=3">${i}</a>
+    </c:forEach>
+    <c:if test="${pageIndex<total}">
+        <a href="${pageContext.request.contextPath}/login?pageIndex=${pageIndex+1}&pageSize=3">下一页</a>
+    </c:if>
+    <a href="${pageContext.request.contextPath}/login?pageIndex=${total}&pageSize=3">尾页</a>
 </body>
 </html>
