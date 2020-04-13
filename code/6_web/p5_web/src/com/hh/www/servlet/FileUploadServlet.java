@@ -1,5 +1,7 @@
 package com.hh.www.servlet;
 
+import com.hh.www.utils.UploadUtils;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +12,9 @@ import javax.servlet.http.Part;
 import javax.servlet.jsp.PageContext;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author: huhao
@@ -35,6 +39,11 @@ public class FileUploadServlet extends HttpServlet {
         // 显示
         response.setContentType("text/html;charset=utf-8");
 
+        List<String> fileType = new ArrayList<String>();
+        fileType.add(".jpg");
+        fileType.add(".png");
+        fileType.add(".bmp");
+
         // 3. 获取文件上传路径
         String realPath = request.getServletContext().getRealPath("/WEB-INF/upload");
         File file = new File(realPath);
@@ -51,9 +60,21 @@ public class FileUploadServlet extends HttpServlet {
             String fileName = part.getSubmittedFileName();
             //2.在part可以获得当前上传的是文件还是普通表单
             if(fileName != null){
+                
+                // 判断文件类型
+                String suffix = fileName.substring(fileName.indexOf("."));
+                if(!fileType.contains(suffix)){
+                    response.getWriter().println(fileName + "不符合要求，上传失败");
+                    continue;
+                }
+
                 // 上传文件
                 //文件----->上传(路径+文件名称)File.separator会自动解析当前JDK运行平台的分割符
-                part.write(file + File.separator + fileName);
+                //通过工具类获得打散二级、三级目录
+                String newFilePath = UploadUtils.createFilePath(realPath, fileName);
+                // 调用工具类，生成唯一的文件名
+                String uniqueFileName = UploadUtils.createUniqueFileName(fileName);
+                part.write(newFilePath + File.separator + uniqueFileName);
                 //清除临时缓冲区
                 part.delete();
             }else{
