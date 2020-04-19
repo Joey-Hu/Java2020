@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick=" openNewWindow()">打开新窗口</button>
+		<button onclick=" closeNewWindow()">关闭新窗口</button>
+		<button onclick="locs()">location</button>
+		<a href="back.html">跳转</a>
+		<button onclick="forwards()">前进</button>
+
+	</body>
+	<script type="text/javascript">
+		var a = 10;
+		var b = 11;
+		
+		document.write(a);
+		document.write("<br>")
+		document.write(window.innerWidth + "*" + window.innerHeight);
+		
+		// 打开新窗口
+		var newWindows;
+		
+		function openNewWindow(){
+			newWindows = window.open("http://www.baidu.com", "baidu");
+		}
+		
+		// 关闭新窗口
+		function closeNewWindow(){
+			newWindows.close();
+		}
+		
+		// 获取屏幕宽度和高度
+		console.log(screen.availWidth + "*" + screen.availHeight);
+		
+		// location
+		function locs(){
+			console.log(location.href);
+			console.log(location.hostname);
+			console.log(location.pathname);
+			console.log(location.port);
+			console.log(location.protocol);
+		}
+		
+		// history
+		function forwards(){
+			history.forward();
+		}
+		
+	</script>
+	
+</html>
