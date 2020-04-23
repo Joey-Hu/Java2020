@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <script src="js/jquery-1.8.3.js"></script>
+</head>
+<body>
+    <div id="div1">
+        <p id="p1">
+            第一个p标签
+        </p>
+        <p class="p2">
+            第二个p标签
+        </p>
+        <p class="p3">
+            第三个p标签
+        </p>
+        <ul>
+            <li id="l1">第一个li标签</li>
+            <li id="l2">第二个li标签</li>
+            <li id="l3">第三个li标签</li>
+            <li id="l4">第四个li标签</li>
+        </ul>
+        <div id="div2">
+            <p>div1中的div2中的第一个p标签</p>
+            <p>div1中的div2中的第二个p标签</p>
+        </div>
+    </div>
+    <button id="btn1">隐藏p标签</button>
+    <button id="btn2">显示p标签</button>
+    <button id="btn3">层级选择器</button>
+    <button id="btn4">过滤选择器</button>
+    <button id="btn5">属性选择器</button>
+</body>
+
+<script type="text/javascript">
+    $(function () {
+        // id 选择器
+        $("#btn1").click(function () {
+            // 在页面中选取所有 <p> 元素，并隐藏
+            // $("P").hide();
+            // class选择器
+            $(".p2").hide();
+        })
+
+        $("#btn2").click(function () {
+            // 在页面中选取所有 <p> 元素，并显示
+            $("p").show();
+
+        })
+
+        // 层级选择器
+        $("#btn3").click(function () {
+            // 后代 选择所有的p标签,只要有包含关系,就算做后代.
+            // $("#div1 p").css("color", "red");
+            //子代  >
+            // $("#div1>p").css("color", "green");
+            // 同辈  +  选择的是下一个.相邻的一个.
+            // 后续同辈 ~  所有符合选择的同辈,都可以选中!
+            // $("#p1+p").css("color", "pink");
+            $("#p1~p").css("color", "pink");
+        })
+
+        // 过滤选择器
+        $("#btn4").click(function () {
+            // :first 匹配第一个
+            // $("ul li:first").css("color", "pink");
+            //:eq(下标)  匹配对应的下标(从0 开始)
+            // $("ul li:eq(1)").css("color", "pink");
+            //:not(条件)
+            // $("ul li:not(:eq(1))").css("color","yellow");
+            //:gt(下标)  lt(下标)
+            // $("ul li:gt(1)").css("color","blue");
+        })
+
+        // 属性过滤器
+        $("#btn5").click(function () {
+            //有 ID 属性的 li
+            // $("li[id]").css("color","blue");
+            //id为 xxx 的 li
+            // $("li[id=l1]").css("color","blue");
+            //id 是 y 为结尾的
+            // $("li[id$=4]").css("color","blue");
+            //id 是 s 为开头的
+            $("li[id^=l]").css("color","blue");
+        })
+    })
+</script>
+</html>
