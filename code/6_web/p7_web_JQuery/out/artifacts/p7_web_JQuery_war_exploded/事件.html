@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery事件</title>
+    <script src = "js/jquery-1.8.3.js"></script>
+</head>
+<body>
+    <p>第一段文字</p>
+    <p>第二段文字</p>
+    <p>第三段文字</p>
+    <p>第四段文字</p>
+    <p id="downup">点击我!松手和不松手</p>
+    <input type="text" name="username" id="user"/>
+</body>
+
+<script type = "text/javascript">
+    $(function () {
+        // 单击事件
+        $("p").click(function () {
+            $(this).css({"color": "red", "font-size": "50px"});
+        })
+        // 双击事件 $("p").dbclick(function(){})
+
+        // hover--mouse相关方法(over,out) 整合
+        $("p").hover(function () {
+            $(this).css({"color":"blue","font-family":"华文彩云"});
+        }, function(){
+            $(this).css({"color":"pink","font-family":"华文彩云"});
+        })
+
+        // 可以为一个元素添加多个事件,.链式编程
+        $("#downup").mousedown(function () {
+            $(this).text("你点我干啥!")
+        }).mouseup(function () {
+            $(this).text("点击我!松手和不松手")
+        })
+
+        //获得焦点和失去焦点   链式编程:按照事件的添加顺序,依次执行!
+        $("#user").focus(function () {
+            $(this).css("backgroundColor","#e93fd4");
+        }).blur(function () {
+            $(this).css("backgroundColor","#25ef31");
+        })
+    })
+</script>
+</html>
