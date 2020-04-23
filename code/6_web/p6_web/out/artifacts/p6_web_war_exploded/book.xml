@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<books>
+    <book>
+        <id>1101</id>
+        <bookname>java开发</bookname>
+        <author>hh</author>
+        <price>99</price>
+    </book>
+    <book>
+        <id>1102</id>
+        <bookname>HTML开发</bookname>
+        <author>hh</author>
+        <price>100</price>
+    </book>
+</books>

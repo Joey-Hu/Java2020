@@ -295,7 +295,7 @@ public class JackSonTest {
 
 #### 第三节 Ajax概述
 
-AJAX 是一种在无需重新加载整个网页的情况下，能够实现局部更新的技术。
+AJAX 是一种在**无需重新加载整个网页**的情况下，能够实现**局部更新**的技术。
 
 ##### 3.1 什么是AJAX   
 
@@ -324,13 +324,13 @@ AJAX是基于现有的Internet标准，并且联合使用它们：
 
 使用Ajax发送请求四个步骤:
 
-1 创建XMLHTTPRequest对象
+**1 创建XMLHTTPRequest对象**
 
-2 设置onreadystatechange回调函数
+**2 设置onreadystatechange回调函数**
 
-3 open() 打开连接
+**3 open() 打开连接**
 
-4 send() 发送请求
+**4 send() 发送请求**
 
 div 部分用于显示来自服务器的信息。当按钮被点击时，它负责调用名为 loadXMLDoc() 的函数：
 
@@ -770,7 +770,7 @@ public class DealServlet extends HttpServlet {
 
 ```
 1、使用Ajax实现进行数据的异步提交和结果回显
-2、请完成下列数据的解析
+2、请完成下列数据的解析(利用IDEA 插件直接从json 数据生成Java 实体类)
 {
     "state": "success",
     "code": "0",
