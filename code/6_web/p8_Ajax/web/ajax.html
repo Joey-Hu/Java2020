@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生ajax实现JSON查询</title>
+    <script src="./js/jquery-1.8.3.js"></script>
+</head>
+<body>
+<div id = "div1">
+    <table id="tb1">
+        <tr id="tr1">
+            <th>编号</th>
+            <th>用户名称</th>
+            <th>用户密码</th>
+            <th>手机号码</th>
+            <th>权限</th>
+        </tr>
+    </table>
+</div>
+<button onclick="check()">获取ajax数据</button>
+<script type="text/javascript">
+    function check() {
+        // 1. 创建XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+        // 2. 设置回调函数
+        xhr.onreadystatechange = function (ev) {
+            if(xhr.readyState == 4 && xhr.status == 200){
+                if(xhr.responseText == "error"){
+                    alert("ajax获取数据发生错误");
+                } else{
+                    var trs = $("#tr1~tr");
+                    $(trs).each(function (i) {
+                        trs[i].remove();
+                    })
+                    var objs = JSON.parse(xhr.responseText);
+                    $(objs).each(function (i) {
+                        var tr = document.createElement("tr");
+                        var tdId = document.createElement("td");
+                        var tdUsername = document.createElement("td");
+                        var tdUserPassword = document.createElement("td");
+                        var tdPhone = document.createElement("td");
+                        var tdAccess = document.createElement("td");
+
+                        // 追加
+                        tdId.innerText = objs[i].id;
+                        tr.append(tdId);
+                        tdUsername.innerText = objs[i].username;
+                        tr.append(tdUsername);
+                        tdUserPassword.innerText = objs[i].userpassword;
+                        tr.append(tdUserPassword);
+                        tdPhone.innerText = objs[i].phone;
+                        tr.append(tdPhone);
+                        tdAccess.innerText = objs[i].access;
+                        tr.append(tdAccess);
+
+                        $("#tb1").append(tr);
+
+                    })
+                }
+            }
+        }
+        // 3. 建立连接
+        xhr.open("GET", "/p8/getAllUsers", true);
+        // 4. 发送请求
+        xhr.send();
+    }
+</script>
+</body>
+</html>

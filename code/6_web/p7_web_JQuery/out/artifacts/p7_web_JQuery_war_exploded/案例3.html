@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例3</title>
+    <script src = "js/jquery-1.8.3.js"></script>
+</head>
+<body>
+    <select id="prov">
+        <option value="0">--请选择--</option>
+
+    </select>
+    <select id="city">
+        <option value="0" >--请选择--</option>
+
+    </select>
+</body>
+    <script type="text/javascript">
+        $(function () {
+            var arr = new Array();
+            arr["河北省"]=["保定","石家庄","邯郸","张家口","廊坊","秦皇岛"];
+            arr["山东省"]=["济南","青岛","烟台","泰安"];
+            arr["山西省"]=["太原","吕梁","大同","运城"];
+            arr["河南省"]=["郑州","开封","驻马店","漯河","焦作"];
+            arr["四川省"]= ["成都","绵阳","乐山"];
+
+            // 添加数据
+            for(var key in arr){
+                $("#prov").append("<option value='" + key + "'>" + key +"</option>")
+            }
+
+            $("#prov").change(function () {
+                $("#city").empty();
+                $("#city").append(" <option value=\"0\" >--请选择--</option>")
+                var values = arr[$(this).val()];
+                for(var i in values){
+                    $("#city").append("<option value='"+values[i]+"'>"+values[i]+"</option>")
+                }
+
+            })
+        })
+    </script>
+</html>

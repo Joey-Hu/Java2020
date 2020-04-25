@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例2</title>
+    <script src = "js/jquery-1.8.3.js"></script>
+</head>
+<body>
+    <select id="leftselect" size="10"  style=" width: 100px;">
+        <option value="1">北京</option>
+        <option value="2">上海</option>
+        <option value="3">南京</option>
+        <option value="4">广州</option>
+        <option value="5">杭州</option>
+        <option value="6">深圳</option>
+    </select>
+
+    <div style="display: inline-block; vertical-align: top; margin-top: 20px;">
+
+        <input type="button" value="右移>>" id="toRight" /><br/>
+        <input type="button" value="左移<<" id="toLeft"/><br/>
+        <input type="button" value="全部右移" id="toRightAll" /><br/>
+        <input type="button" value="全部左移" id="toLeftAll"/>
+
+    </div>
+    <select id="rightselect" size="10" multiple="multiple" style=" width: 100px;">
+
+    </select>
+</body>
+    <script type="text/javascript">
+        $(function () {
+            // jQuery对象转原生DOM对象
+            // https://www.cnblogs.com/0x29a/p/11240888.html
+            var leftselect = $("#leftselect")[0];
+            var rightselect = $("#rightselect")[0];
+
+
+            $("#toRight").click(function () {
+                $("#rightselect").append(leftselect.options[leftselect.selectedIndex]);
+            })
+
+            $("#toLeft").click(function () {
+                $("#leftselect").append(rightselect.options[rightselect.selectedIndex]);
+            })
+            $("#toRightAll").click(function () {
+                $("#rightselect").append(leftselect.options);
+            })
+            $("#toLeftAll").click(function () {
+                $("#leftselect").append(rightselect.options);
+            })
+        })
+    </script>
+</html>

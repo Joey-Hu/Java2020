@@ -26,11 +26,11 @@ AJAX = 异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
 
 ​	常用参数
 
-​	contentType:(默认: "application/x-www-form-urlencoded") 发送信息至服务器时内容编码类型。默认值适合大多数情况。
+​	**contentType**:(默认: "application/x-www-form-urlencoded") 发送信息至服务器时内容编码类型。默认值适合大多数情况。
 
-​	data:发送到服务器的数据
+​	**data**:发送到服务器的数据
 
-​	dataType:预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断。
+​	**dataType**:预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断。
 
 ​		"xml": 返回 XML 文档，可用 jQuery 处理。
 
@@ -53,9 +53,9 @@ function (data, textStatus) {
 }
 ```
 
-​	type：(默认: "GET") 请求方式 ("POST" 或 "GET")， 默认为 "GET"。注意：其它 HTTP 请求方法，如 PUT 和 DELETE 也可以使用，但仅部分浏览器支持。
+​	**type**：(默认: "GET") 请求方式 ("POST" 或 "GET")， 默认为 "GET"。注意：其它 HTTP 请求方法，如 PUT 和 DELETE 也可以使用，但仅部分浏览器支持。
 
-​	url：(默认: 当前页地址) 发送请求的地址。
+​	**url**：(默认: 当前页地址) 发送请求的地址。
 
 ````html
 <!DOCTYPE html>
