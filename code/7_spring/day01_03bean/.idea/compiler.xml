@@ -6,13 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="day01_01factory" />
-        <module name="day01_01jdbc" />
+        <module name="day01_03bean" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="day01_01factory" target="1.5" />
-      <module name="day01_01jdbc" target="1.5" />
+      <module name="day01_03bean" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
