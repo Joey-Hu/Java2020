@@ -33,7 +33,7 @@ MVC框架是由Model模型（JavaBean），View视图(Jsp) 和 Controller控制�
 
 用户通过View页面向服务端提出请求，可以是表单请求、超链接请求、AJAX请求等。服务端Controller控制器接收到请求后对请求进行解析，找到相应 的Model对用户请求进行处理。Model处理后，将处理结果再交给ControllerController在接到处理结果后，根据处理结果找到要作为向客户端发回的响应View页面。页面经渲染（数据填充）后，再发送给客户端。
 
-!["1_spring_MVC.png"]()
+!["spring_MVC.png"](\img\spring_MVC.png)
 
 MVC 和三层架构的关系：
 
@@ -53,7 +53,20 @@ Spring：以整个应用大管家的身份出现。整个应用中所有的Bean�
 
 
 
+### 3. 建立 Spring 项目
 
+#### 3.1 步骤
+
+```
+1 新建 maven 工程
+2 编写持久层和业务层逻辑代码
+3 pom 文件导入 spring 依赖    <dependencies>... spring-context ...</dependencies>
+4 xml 文件 添加约束xmlns
+4.1 把对象的创建交给 spring 管理 id class
+5 获取 spring 的 Ioc 核心容器，并根据 id 获取对象
+5.1 获取核心容器对象
+5.2 根据 id 获取 Bean 对象
+```
 
 
 参考：
